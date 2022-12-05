@@ -10,17 +10,32 @@ public class Day2 extends AdventOfCode2022 {
     // Map with moves and corresponding score
     // A for Rock, B for Paper, and C for Scissors (opponent)
     // X for Rock, Y for Paper, and Z for Scissors (elf)
-    private Map<String, Integer> roundScores = new HashMap<>() {{
-        put("AX", 1 + 3);
-        put("AY", 2 + 6);
-        put("AZ", 3 + 0);
-        put("BX", 1 + 0);
-        put("BY", 2 + 3);
-        put("BZ", 3 + 6);
-        put("CX", 1 + 6);
-        put("CY", 2 + 0);
-        put("CZ", 3 + 3);
-    }};
+    private Map<String, Integer> roundScores = Map.of(
+            "AX", 1 + 3,
+            "AY", 2 + 6,
+            "AZ", 3 + 0,
+            "BX", 1 + 0,
+            "BY", 2 + 3,
+            "BZ", 3 + 6,
+            "CX", 1 + 6,
+            "CY", 2 + 0,
+            "CZ", 3 + 3
+    );
+
+    // Map with moves and corresponding move to get expected result
+    // A for Rock, B for Paper, and C for Scissors (opponent)
+    // X for loose, Y for draw, and Z for win (elf)
+    Map<String, String> roundMoves = Map.of(
+            "AX", "Z",
+            "AY", "X",
+            "AZ", "Y",
+            "BX", "X",
+            "BY", "Y",
+            "BZ", "Z",
+            "CX", "Y",
+            "CY", "Z",
+            "CZ", "X"
+    );
 
     @Override
     public int getDayNumber() {
@@ -45,6 +60,8 @@ public class Day2 extends AdventOfCode2022 {
 
     @Override
     public void solvePart2(List<String> input) {
+
+
         System.out.println("Day1.runPart2: " + "N/A");
     }
 
