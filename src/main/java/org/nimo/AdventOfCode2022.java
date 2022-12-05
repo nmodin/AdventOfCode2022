@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AdventOfCode2022 {
 
@@ -25,7 +26,7 @@ public abstract class AdventOfCode2022 {
     protected List<String> getFileAsStream(final int day) throws IOException {
         try (InputStreamReader isr = new InputStreamReader(getFileAsIOStream(day));
              BufferedReader reader = new BufferedReader(isr)) {
-            return reader.lines().toList();
+            return reader.lines().collect(Collectors.toList());
         }
     }
 

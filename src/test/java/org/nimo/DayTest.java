@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Day1Test {
+class DayTest {
 
     @Test
     void testDay1() {
@@ -19,6 +19,12 @@ class Day1Test {
     }
 
     @Test
-    void runPart2() {
+    void testDay2() {
+        Day2 day = new Day2();
+        try {
+            day.run();
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
     }
 }
