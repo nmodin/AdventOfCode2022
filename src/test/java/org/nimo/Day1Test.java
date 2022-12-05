@@ -1,6 +1,5 @@
 package org.nimo;
 
-import org.example.Day1;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

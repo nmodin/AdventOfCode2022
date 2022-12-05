@@ -1,4 +1,4 @@
-package org.example;
+package org.nimo;
 
 public class Main {
     public static void main(String[] args) {

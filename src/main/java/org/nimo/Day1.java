@@ -1,4 +1,4 @@
-package org.example;
+package org.nimo;
 
 import java.util.*;
 
