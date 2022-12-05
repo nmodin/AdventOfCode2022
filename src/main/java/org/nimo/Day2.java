@@ -6,7 +6,7 @@ public class Day2 extends AdventOfCode2022 {
 
     @Override
     public int getDayNumber() {
-        return 1;
+        return 2;
     }
 
     @Override
