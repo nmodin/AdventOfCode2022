@@ -3,6 +3,7 @@ package org.nimo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Day2 extends AdventOfCode2022 {
 
@@ -20,19 +21,20 @@ public class Day2 extends AdventOfCode2022 {
             "CY", 2,
             "CZ", 3 + 3
     );
-    // Map with moves and corresponding move to get expected result
+
+    // Map with moves and corresponding move combo to get expected result
     // A for Rock, B for Paper, and C for Scissors (opponent)
     // X for loose, Y for draw, and Z for win (elf)
     private final Map<String, String> roundMoves = Map.of(
-            "AX", "Z",
-            "AY", "X",
-            "AZ", "Y",
-            "BX", "X",
-            "BY", "Y",
-            "BZ", "Z",
-            "CX", "Y",
-            "CY", "Z",
-            "CZ", "X"
+            "AX", "AZ",
+            "AY", "AX",
+            "AZ", "AY",
+            "BX", "BX",
+            "BY", "BY",
+            "BZ", "BZ",
+            "CX", "CY",
+            "CY", "CZ",
+            "CZ", "CX"
     );
 
     @Override
@@ -43,30 +45,31 @@ public class Day2 extends AdventOfCode2022 {
     @Override
     final protected void solvePart1(List<String> input) {
 
-        List<Integer> scoreList = new ArrayList<>();
-
-        for (String roundInput : input) {
-            scoreList.add(roundScores.get(roundInput.replaceAll(" ", "")));
-        }
-
-        Integer sum = scoreList.stream()
-                .reduce(0, Integer::sum);
-
-        System.out.println(input);
+        Integer sum = calculateScore(input);
         System.out.println("Day1.runPart1: " + sum);
     }
 
     @Override
     public void solvePart2(List<String> input) {
 
+        List<String> transformedInput = input.stream()
+                .map(roundInput -> roundMoves.get(stripSpaces(roundInput)))
+                .collect(Collectors.toCollection(() -> new ArrayList<>(input.size())));
 
-        System.out.println("Day1.runPart2: " + "N/A");
+        Integer sum = calculateScore(transformedInput);
+        System.out.println("Day1.runPart2: " + sum);
     }
 
-    private int score(String opponentMove, String elfMove) {
-        return 0;
+    private Integer calculateScore(List<String> input) {
+        List<Integer> scoreList = input.stream()
+                .map(roundInput -> roundScores.get(stripSpaces(roundInput)))
+                .toList();
+
+        return scoreList.stream()
+                .reduce(0, Integer::sum);
     }
 
-    public record Round(String opponentMove, String elfMove) {
+    private static String stripSpaces(String roundInput) {
+        return roundInput.replaceAll(" ", "");
     }
 }
