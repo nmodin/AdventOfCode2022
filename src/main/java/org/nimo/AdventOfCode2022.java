@@ -20,7 +20,9 @@ public abstract class AdventOfCode2022 {
     }
 
     protected abstract int getDayNumber();
+
     protected abstract void solvePart1(List<String> input);
+
     protected abstract void solvePart2(List<String> input);
 
     protected List<String> getFileAsStream(final int day) throws IOException {
@@ -30,8 +32,7 @@ public abstract class AdventOfCode2022 {
         }
     }
 
-    protected InputStream getFileAsIOStream(final int day)
-    {
+    protected InputStream getFileAsIOStream(final int day) {
         String fileName = String.format(fileTemplate, day);
 
         InputStream ioStream = this.getClass()

@@ -1,6 +1,8 @@
 package org.nimo;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 public class Day1 extends AdventOfCode2022 {
 

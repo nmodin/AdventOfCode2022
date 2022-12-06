@@ -1,7 +1,6 @@
 package org.nimo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,22 +9,21 @@ public class Day2 extends AdventOfCode2022 {
     // Map with moves and corresponding score
     // A for Rock, B for Paper, and C for Scissors (opponent)
     // X for Rock, Y for Paper, and Z for Scissors (elf)
-    private Map<String, Integer> roundScores = Map.of(
+    private final Map<String, Integer> roundScores = Map.of(
             "AX", 1 + 3,
             "AY", 2 + 6,
-            "AZ", 3 + 0,
-            "BX", 1 + 0,
+            "AZ", 3,
+            "BX", 1,
             "BY", 2 + 3,
             "BZ", 3 + 6,
             "CX", 1 + 6,
-            "CY", 2 + 0,
+            "CY", 2,
             "CZ", 3 + 3
     );
-
     // Map with moves and corresponding move to get expected result
     // A for Rock, B for Paper, and C for Scissors (opponent)
     // X for loose, Y for draw, and Z for win (elf)
-    Map<String, String> roundMoves = Map.of(
+    private final Map<String, String> roundMoves = Map.of(
             "AX", "Z",
             "AY", "X",
             "AZ", "Y",
